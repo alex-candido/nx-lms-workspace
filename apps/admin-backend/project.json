@@ -1,0 +1,24 @@
+{
+  "name": "admin-backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/admin-backend/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "admin-backend:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "admin-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "admin-backend:build:production"
+        }
+      }
+    }
+  }
+}
