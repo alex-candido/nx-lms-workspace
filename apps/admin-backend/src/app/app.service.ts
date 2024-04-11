@@ -5,4 +5,7 @@ export class AppService {
   getData(): { message: string } {
     return { message: 'Hello API' };
   }
+  setData(data: { hello: string }) {
+    return data;
+  }
 }
