@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "src": "dist",
+    "commands": [
+      "cd apps/client-frontend && yarn nx build client-frontend",
+      "cd apps/admin-frontend && yarn nx build admin-frontend",
+      "cd apps/admin-backend && yarn run build"
+    ]
+  },
+  "routes": [
+    {
+      "src": "/apps/client-frontend/.next/**",
+      "dest": "/frontend/.next/**"
+    },
+    {
+      "src": "/apps/admin-frontend/.next/**",
+      "dest": "/admin-frontend/.next/**"
+    },
+    {
+      "src": "/dist/apps/admin-backend/**",
+      "dest": "/admin-backend/**"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/v1/**",
+      "destination": "/apps/admin-backend/api/v1/**"
+    }
+  ],
+  "aliases": {
+    "/client-frontend": "/apps/client-frontend",
+    "/admin-frontend": "/apps/admin-frontend",
+    "/admin-backend": "/apps/admin-backend"
+  },
+  "env": {
+    "VERCEL_REGION": "us-central1"
+  }
+}
